@@ -1,3 +1,12 @@
+- [Installation](#installation)
+- [Settings](#settings)
+  - [System Level](#system-level)
+  - [Global Level](#global-level)
+  - [Local Level](#local-level)
+- [Usage](#usage)
+  - [Cheat Sheet](#cheat-sheet)
+
+
 # Installation
 1. Install GIT to your desktop.
 2. Navigate to a folder, right click and select Open Git Bash here
