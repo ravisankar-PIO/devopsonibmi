@@ -4,7 +4,7 @@
        
 ><h3> Table of Contents 
 </h3>
- 
+  
 - [Pre-requisites](#pre-requisites)
   - [Connect to IBMI from VS Code](#connect-to-ibmi-from-vs-code)
   - [Set Shell to BASH](#set-shell-to-bash)
