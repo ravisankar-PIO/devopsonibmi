@@ -1,9 +1,8 @@
 <h1 align=center> Modern DevOps Practices on IBMi</h1>
  
 <p align = center> Practical Guide </p>
-
- 
-><h3> Table of Contents
+       
+><h3> Table of Contents 
 </h3>
  
 - [Pre-requisites](#pre-requisites)
