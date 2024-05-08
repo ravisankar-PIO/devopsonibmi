@@ -129,7 +129,7 @@ Enter the command below in your PASE terminal.
 ![alt text](images/image-51.png)
 >*GIT has been installed successfully*
 ---
-
+ 
 <img src="images/githublogo.jpg"  width="100">
 
 # Setup GITHUB
