@@ -249,26 +249,23 @@ wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 <br>
 
 ### Start Jenkins
-Launching the Jenkins app is nothing but launching the `jenkins.war` file via a JAVA command with correct parameters. It can be started via multiple methods. For the very first run, we will follow method-1
+Launching the Jenkins app is nothing but launching the `jenkins.war` file via a JAVA command with correct parameters. It can be started via multiple methods. 
 *(Notice that I am using the **port# 9095**)*
-* **Method-1:** Start directly in an interactive SSH sesion
+* **Method-1:**  Use Process Management tool like Service Commander. **(preferred)**
+  Jump to [this section]() to view how to start the application via Service-Commander.
+  
+<br>
+
+* **Method-2:** Start directly in an interactive SSH sesion
   Enter the below command in your PASE terminal.
   ```bash
   java -jar /home/CECUSER/jenkins.war --httpPort=9095
   ```
-<br>
-
-* **Method-2:** Start as a batch Job in Green Screen
-  Head over to the green screen and issue the command below. 
-  ```js
-  SBMJOB CMD(QSH CMD('java -jar /home/CECUSER/jenkins.war --httpPort=9095')) JOB(JENKINS)
-  ```
-    <br>
-* **Method-3:** Use Process Management tool like Service Commander.
-  Jump to [this section]() to view how to start the application via Service-Commander.
+  *Note: You need to keep the PASE Terminal session alive for Method-2*
 
  ### Initial Configuration
-- If all worked correctly, then a default admin password will be stored on the below location. Open the file `initialAdminPassword` and copy the contents of that file to your clipboard.
+- If all worked correctly, then a default admin password will be stored on the location `/jenkins/secrets/InitialAdminPassword` 
+- Open the file `initialAdminPassword` and copy the contents of that file to your clipboard.
   ![alt text](images/image-67.png)
 
 
@@ -536,16 +533,17 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
 
   | Question | Answer |  
   |-|-|
-  | Would you like this service to be available to all users? [n] <br> <p style="font-size:12px"> (we don't want other users to start this application)</p> | n
-  | Short Name <br> <p style="font-size:12px"> (this will be the name to start the application. So choose wisely)</p> | jenkins
-  | Friendly Name <br> <p style="font-size:12px">(a short description about the app)</p> | Jenkins for IBMi
-  | Start app in the current directory (/home/CECUSER)? [y] <br> <p style="font-size:12px"> (yes, we want to start the app in the current directory)</p> | y
-  | App to be run under a unique Job Name? <br> <p style="font-size:12px"> (No, so we will leave it to blanks) </p> | <blanks>
-  | Submit to batch? <br> <p style="font-size:12px"> (No, we will run the app from within PASE environment)</p> | n
-  | Environment Variables? <br> <p style="font-size:12px"> (Since we have already setup the path variables, we will leave it as blanks)</p> | 
-  | What Other Environment Variables? <br> <p style="font-size:12px"> (Nothing here, just hit enter again)</p> | 
-  | What Other groups would this app be a part of? <br> <p style="font-size:12px"> (Nothing here, just hit enter again)</p> | 
-  | What Other services would this app be a part of? <br> <p style="font-size:12px"> (Nothing here, just hit enter again)</p> | 
+  | Would you like this service to be available to all users? [n] <br> <p style="font-size:8px"> (we don't want other users to start this application)</p> | n
+  | Short Name <br> <p style="font-size:8px"> (this will be the name to start the application. So choose wisely)</p> | jenkins
+  | Friendly Name <br> <p style="font-size:8px">(a short description about the app)</p> | Jenkins for IBMi
+  | Start app in the current directory (/home/CECUSER)? [y] <br> <p style="font-size:8px"> (yes, we want to start the app in the current directory)</p> | y
+  | Which ports does your app run on? <br> <p style="font-size:8px"> (Enter the port# that the app is using) </p> | 9095
+  | App to be run under a unique Job Name? <br> <p style="font-size:8px"> (No, so we will leave it to blanks) </p> | <blanks>
+  | Submit to batch? <br> <p style="font-size:8px"> (No, we will run the app from within PASE environment)</p> | n
+  | Environment Variables? <br> <p style="font-size:8px"> (Since we have already setup the path variables, we will leave it as blanks)</p> | 
+  | What Other Environment Variables? <br> <p style="font-size:8px"> (Nothing here, just hit enter again)</p> | 
+  | What Other groups would this app be a part of? <br> <p style="font-size:8px"> (Nothing here, just hit enter again)</p> | 
+  | What Other services would this app be a part of? <br> <p style="font-size:8px"> (Nothing here, just hit enter again)</p> | 
 
 
 - If all worked correctly, then you should see the below output
