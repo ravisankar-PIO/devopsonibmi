@@ -2,7 +2,16 @@
 
 > <p align = center> Overview
 ---
-
+# The What and Why of DevOps for IBMi
+Enter content here explaining the need for DevOps for IBMi
+# Integral parts of DevOps
+- Source Control Management
+- Pipeline
+- Project Management
+- Network Topology & Infrastucture
+  - Network Connections
+  - Security Concerns
+- There is no "one size fits for all"
 
 # Major Difference between other servers and IBMi
 
@@ -13,6 +22,10 @@ Develop Locally and Deploy Globally | Develop & Deploy on the server itself
 Database & Server are separate entities | Database & Server are one and the same
 Middleware & Hypervisors are needed | Middleware & Hypervisors are integrated
 
+# DevOps Toolset
+![DevOpsToolset](images/DevOpsToolset.jpg)
+
+- DevOps experts don't know about IBMi and Vice-Versa
 
 # Source Control Management
 ## GIT
@@ -26,29 +39,65 @@ But don't we have Turnover, Implementor, Aldon, and others already? How Git is d
 * It enables Historical Comparison
 * Disaster Recovery or time machine (!)
 * Powerful integration with CI/CD tools.
-  
+    
 
-## Cloud based GIT tools
-### Github
+### Cloud based GIT tools
+#### Github
   * **Most popular** code hosting software
   * Owned by Microsoft
   * Has extra features like projects, milestone, pull request
   * CICD is not available by default
   * Proprietory
-### Gitlab
+#### Gitlab
   * **Open Source Alternative** to GitHub
   * Can be installed on almost any server - except IBMi :( 
   * Easier to manage projects
   * Has built in CICD pipeline
-### BitBucket
+#### BitBucket
   * A native tool in Atlassian's Open Dev Ops Solution
   * Can be integrated with **Jira & Confluence**
-### GitBucket
+#### GitBucket
   * An alternative to Gitlab offering **easy installation & intuitive UI**
   * **Open Source**
   * Can be **installed on IBMi** :) 
   * Issues, Pull Requests and Wiki for repositories
+
+### A Vanilla GIT workflow for IBMers.
+
+
+
+### General Misconceptions about GIT
+  | What it does | What it doesn't|
+  |--|--|
+  Manages Source Code | Compiling
+  Keeps a history | Testing
+  Enables Branching | Project Management
+  ' | Planning
+  ' | Impact Analyisis
+  ' | Deployment 
+
+#### Develompment Models
+| Script Based | Archive Based | *Object Based* |
+| -- | -- | -- |
+No need to compile | Entire Project needs to be compiled | Only the changed objects need to be compiled
+E.g., HTML, JS, PHP | E.g., Java | RPG, CL, C, VB
+Build Process isn't compulsory | Build is compulsory | Build is required only for changed objects
+
+
+#### Some concerns
+- When you choose the local development model path,
+  - There will be Multiple copies of the sources.
+  - You need to compile from IFS
+  - Source dates, Color coded comments, Modified Tag will be lost
+  - Some audit information will be lost (like compiled from sourcefile etc.,)
+
+#### Final Thoughts
+- Git and GitHub are mostly different
+- Git is a programmer's tool
+- It can be integrated with large number of tools
+
 ---
+
 # CI/CD tools
 CI/CD is a practice where developers regularly merge their code changes into a central repository, followed by automated building and testing (if required). There are various tools available for IBMi.
 
@@ -85,3 +134,17 @@ CI/CD is a practice where developers regularly merge their code changes into a c
 ### Docker
 ### ChRoot 
 A built in RPM command which will create our own `/QOpenSys ` directory
+
+# Workflow
+Simple Workflow
+![alt text](image.png)
+
+Complex Workflow
+![alt text](image-1.png)
+
+
+# Points to note
+- Testing is more important for DevOps
+- Build the sandbox, test it, update/migrate tools, then test again. 
+- Have a fallback plan during migration of PROD.
+
