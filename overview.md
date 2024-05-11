@@ -3,6 +3,17 @@
 > <p align = center> Overview
 ---
 
+
+# Major Difference between other servers and IBMi
+
+
+|Others|IBMi|
+|--|--|
+Develop Locally and Deploy Globally | Develop & Deploy on the server itself
+Database & Server are separate entities | Database & Server are one and the same
+Middleware & Hypervisors are needed | Middleware & Hypervisors are integrated
+
+
 # Source Control Management
 ## GIT
 Let's talk about GIT - the big daddy of Source Control Managers. Git is a source change management tool, or version control software, used to keep track of changes to your source code.
