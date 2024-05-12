@@ -55,7 +55,6 @@ We will be creating a separate IBMi user profile with limited security access fo
 
 - We will create separate user profile for this SFTP access. Note that the IBMi login for the user SFTPUSR1 is disabled.
   - `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
-<br>
 
 - Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.
   - `mkdir /home/sftpusr1`
