@@ -179,23 +179,23 @@ If you're running V7R2 & above,
 <br>
 
 - Enter the below command to initiate an SFTP. 
-  `sftp -i "C:\Users\RavisankarPandian\.ssh\goldenkey" sftpusr1@129.40.94.17`
+  - `sftp -i "C:\Users\RavisankarPandian\.ssh\goldenkey" sftpusr1@129.40.94.17`
   - *Make sure to replace the user name with your username*
   - *Make sure to replace your IBMi's IP address*
 <br>
 
 - We will change the current directory of my local machine to the Downloads folder
-`lcd Downloads`
+  - `lcd Downloads`
 <br>
 
 - Let's download the `new.file` that we just created on our IBMi to my laptop
-  `get new.file`
+  - `get new.file`
 <br>
 
 - Let's try uploading a file called `nick.jpg` from my Downloads folder to the IBMi just for fun.
-  `put nick.jgp`
+  - `put nick.jgp`
 <br>
 
 - Once transfer is done, let's close the connection.
-`bye`
+  - `bye`
 <br>
