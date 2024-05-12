@@ -48,61 +48,49 @@ We will be creating a separate IBMi user profile with limited security access fo
 
   ### Full access Method 
 - Login to your IBMi with a profile that has authority to create and manage user profiles (preferably QSECOFR).
-
 <br>  
 
 - Enter command `Call QP2TERM` to enter the PASE Environment 
-
 <br>
 
 - We will create separate user profile for this SFTP access. Note that the IBMi login for the user SFTPUSR1 is disabled.
-  `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
-
+  - `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
 <br>
 
 - Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.
-  `mkdir /home/sftpusr1`
-
+  - `mkdir /home/sftpusr1`
 <br>
 
 - Create a .SSH directory within the user's home directory.
   `mkdir /home/sftpusr1/.ssh`
-
 <br>
 
 - Set permissions on the user's home directory.
   `chmod 755 /home/sftpusr1`
-
 <br>
 
 - Set permissions on the user's .ssh directory.
   `chmod 700 /home/sftpusr1/.ssh`
-
 <br>
 
 - Change ownership of the home directory to the SSH user.
   `chown sftpusr1 /home/sftpusr1`
-
 <br>
 
 - Change ownership of the .SSH directory to the SSH user.
   `chown sftpusr1 /home/sftpusr1/.ssh`
-
 <br>
 
 - Change the Home directory of the sftpusr1. Note that only this folder will be accessible by the client system (my laptop)
   `system "CHGUSRPRF USRPRF(sftpusr1) HOMEDIR('/home/sftpusr1')"`
-
 <br>
 
 - Rename the public key `id_rsa.pub` to `authorized_keys` and place it in the home directory of SFTP1 user. 
   `mv /home/$USER/.ssh/id_rsa.pub /home/sftpusr1/.ssh/authorized_keys`
-
 <br>
 
 - Change ownership of the authorized_keys file to the SSH user.
   `chown sftpusr1 /home/sftpusr1/.ssh/authorized_keys`
-
 <br>
 
 - Set permissions on the authorized_keys file.
@@ -115,11 +103,12 @@ We will be creating a separate IBMi user profile with limited security access fo
 ### Restricted Access Method
 - Login to your IBMi with a profile that has authority to create and manage user profiles. 
 <br>  
+
 - Enter command `Call QP2TERM` to enter the PASE Environment 
 <br>
+
 - We will create separate user profile for this SFTP access. Note that the login for the user SFTPUSR1 is disabled.
   `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
-
 <br>
 
 - We will create a separate Root folder for the user SFTPUSR1. IBMi provides with an installation script to create a separate root folder for the specified user. Now depending upon your IBMi version, the script will be present on different location. Run the below command.
@@ -132,27 +121,24 @@ If you're running V7R2 & above,
   >`/QOpenSys/QIBM/ProdData/SC1/OpenSSH/openssh-3.8.1p1/ `
   >If you're running V7R1, the choot_setup_script.sh will be present in,
   >`/QOpenSys/QIBM/ProdData/SC1/OpenSSH/openssh-4.7p1`
-
 <br>
 
 - Change the LOCALE parameter in the user profile to *NONE
   `system "CHGUSRPRF USRPRF(SSHTEST) LOCALE(*NONE)"`
-
 <br>
 
 - SSH Daemon need to be started using a QSECOFR user profile
   `/QOpenSys/usr/sbin/sshd`
   
   >Note: The SSH daemon must be started with the QSECOFR user profile to activate the chroot function. Starting the SSH daemon with a profile that has QSECOFR authority will not activate the chroot function. A user profile with a UID of (0) is required to activate the chroot function. The QSECOFR user profile on the IBM i is shipped with a UID of (0).
-
 <br>
 
 - Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.
   `mkdir /QOpenSys/QIBM/UserData/SC1/OpenSSH/chroot/home/sftpusr1`
 <br>
 
-- Create a .SSH directory within the user's home directory.
-  `mkdir /QOpenSys/QIBM/UserData/SC1/OpenSSH/chroot/home/sftpusr1/.ssh`
+- Create a .SSH directory within the user's home directory
+  - `mkdir /QOpenSys/QIBM/UserData/SC1/OpenSSH/chroot/home/sftpusr1/.ssh`
 <br>
 
 - Set permissions on the user's home directory.
@@ -169,15 +155,14 @@ If you're running V7R2 & above,
 
 - Change ownership of the .SSH directory to the SSH user.
   `chown sftpusr1 /QOpenSys/QIBM/UserData/SC1/OpenSSH/chroot/home/sftpusr1/.ssh`
-
 <br>
 
 - Rename the public key `id_rsa.pub` to `authorized_keys` and place it in the home directory of SFTP1 user. 
   `mv /home/$USER/.ssh/id_rsa.pub /QOpenSys/QIBM/UserData/SC1/OpenSSH/chroot/home/sftpusr1/.ssh/authorized_keys`
 <br>
+
 - Change ownership of the authorized_keys file to the SSH user.
   `chown SFTPUSR1 /QOpenSys/QIBM/UserData/SC1/OpenSSH/chroot/home/sftpusr1/.ssh/authorized_keys`
-
 <br>
 
 - Set permissions on the authorized_keys file.
