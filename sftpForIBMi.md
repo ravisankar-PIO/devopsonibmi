@@ -34,12 +34,12 @@ It is a four Step Process where we need to,
 
 ## Share the private key to the client
 
-- Use VS Code, ACS, or  WinSCP to download the `id_rsa` to the laptop and place it in `C:\Users\<username>\.ssh` folder. If there is no .ssh folder in your laptop, then please create one!
+- Use VS Code, ACS, or  WinSCP to download the file `id_rsa` to the laptop and place it in `C:\Users\<username>\.ssh` folder. If there is no .ssh folder in your laptop, then please create one!
 - Since I already have lot of keys in my .ssh folder, I am going to rename the file as `goldenkey`
   ![goldnekey](image-3.png)
 
 ## Setup IBMi as Host 
-We will be creating a separate IBMi user profile for the SFTP access. Whoever making an SFTP connection to the IBMi using that profile will have the same level of security and file system access. So we need to decide what type of access are we going to provide to the SFTP client.
+We will be creating a separate IBMi user profile with limited security access for the SFTP file transfer purpose. Whoever making an SFTP connection to the IBMi using the new user profile will have the same level of security and file system access. So we need to decide what type of access are we going to provide to the SFTP client.
 <br>
 | <div style="width:300px">Full Access</div>  | <div style="width:300px">Restricted Access</div> |
 |-- |-- |
@@ -47,7 +47,7 @@ We will be creating a separate IBMi user profile for the SFTP access. Whoever ma
 
 
   ### Full access Method 
-- Login to your IBMi with a profile that has authority to create and manage user profiles. 
+- Login to your IBMi with a profile that has authority to create and manage user profiles (preferably QSECOFR).
 
 <br>  
 
@@ -55,20 +55,20 @@ We will be creating a separate IBMi user profile for the SFTP access. Whoever ma
 
 <br>
 
-- We will create separate user profile for this SFTP access. Note that the login for the user SFTPUSR1 is disabled.
+- We will create separate user profile for this SFTP access. Note that the IBMi login for the user SFTPUSR1 is disabled.
 
   `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
 
 <br>
 
-- Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.<br>
+- Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.
   `mkdir /home/sftpusr1`
 
 <br>
 
 - Create a .SSH directory within the user's home directory.
 
-`mkdir /home/sftpusr1/.ssh`
+  `mkdir /home/sftpusr1/.ssh`
 
 <br>
 
@@ -106,6 +106,7 @@ We will be creating a separate IBMi user profile for the SFTP access. Whoever ma
 `chown sftpusr1 /home/sftpusr1/.ssh/authorized_keys`
 
 <br>
+
 - Set permissions on the authorized_keys file.
 `chmod 600 /home/sftpusr1/.ssh/authorized_keys`
 <br>
