@@ -29,7 +29,7 @@ Middleware & Hypervisors are needed | Middleware & Hypervisors are integrated
 
 # Source Control Management
 ## GIT
-Let's talk about GIT - the big daddy of Source Control Managers. Git is a source change management tool, or version control software, used to keep track of changes to your source code.
+Let's talk about GIT - the big daddy of Version Control System. Git is a version control software, used to keep track of changes to your source code.
 
 But don't we have Turnover, Implementor, Aldon, and others already? How Git is different?
 
@@ -92,9 +92,10 @@ Build Process isn't compulsory | Build is compulsory | Build is required only fo
   - Some audit information will be lost (like compiled from sourcefile etc.,)
 
 #### Final Thoughts
-- Git and GitHub are mostly different
-- Git is a programmer's tool
-- It can be integrated with large number of tools
+- Git and GitHub are mostly different.
+- Git is tool mostly for programmers.
+- GitHub is a tool mostly for Project Managers and leads.
+- GIT can be integrated with large number of tools.
 
 ---
 
