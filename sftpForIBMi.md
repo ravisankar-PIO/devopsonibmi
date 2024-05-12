@@ -3,11 +3,11 @@
 
 >Setup IBMi to allow other systems to access it's IFS folder using SFTP
 
-We are going to setup my laptop as SFTP client (which will request for files) and IBMi as the SFTP host (which will contain the files). So in this case, my laptop will be the one that makes a request to download files. 
+We are going to setup our laptop as SFTP client (which will request for files) and IBMi as the SFTP host (which will contain the files). So in this case, our laptop will be the one that makes a request to download files. 
 
-SFTP means the ability to do FTP without password based authentication. Instead of password we will use the public/private keys. We will give the public key to the host (IBMi) and private key to the client (my laptop).
+In a nutshell, SFTP means the ability to do FTP without password based authentication. Without password means weak security? No, That's where the 'S' in the SFTP kicks in. Instead of password we will use the public/private keys. We will give the public key to the host (IBMi) and private key to the client (our laptop).
 
-It is a four Step Process where we need to,
+In order to setup IBMi as the SFTP host, where we need to,
 - [Generate Keys](#generate-keys)
 - [Share the private key to the client](#share-the-private-key-to-the-client)
 - [Setup IBMi as Host](#setup-ibmi-as-host)
@@ -19,7 +19,7 @@ It is a four Step Process where we need to,
 
 ## Generate Keys
   
-- Login to your IBMi with a profile that has authority to create and manage user profiles. 
+- Login to your IBMi with a profile that has authority to create and manage user profiles. Preferably QSECOFR. 
 <br>  
 - Enter command `Call QP2TERM` to enter the PASE Environment 
 <br>
@@ -81,7 +81,7 @@ We will be creating a separate IBMi user profile with limited security access fo
   - `chown sftpusr1 /home/sftpusr1/.ssh`
 <br>
 
-- Change the Home directory of the sftpusr1. Note that only this folder will be accessible by the client system (my laptop)
+- Change the Home directory of the sftpusr1. Note that only this folder will be accessible by the client system (our laptop)
   - `system "CHGUSRPRF USRPRF(sftpusr1) HOMEDIR('/home/sftpusr1')"`
 <br>
 
@@ -188,7 +188,7 @@ If you're running V7R2 & above,
   - `lcd Downloads`
 <br>
 
-- Let's download the `new.file` that we just created on our IBMi to my laptop
+- Let's download the `new.file` that we just created on our IBMi to our laptop
   - `get new.file`
 <br>
 

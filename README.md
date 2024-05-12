@@ -103,8 +103,8 @@ If you decide to start the application from the green screen, then you have to r
 
  ## Verify the setup
  Once the initial setup is complete,
-- **Disconnect the IBMI and reconnect again**
-- Once connected, open up the PASE terminal again by entering `Ctrl+Shift+J` If the shell is set to bash successfully, you should see the below screen
+- **Disconnect the IBMI from your VS Code and reconnect again**
+- Once connected, open up the PASE terminal again by entering `Ctrl+Shift+J`. If the shell is set to bash successfully, you should see the below screen
 ![alt text](images/bashh.png)
 - Run the below command to check whether the path variable has been setup correctly.
   ```bash
@@ -124,7 +124,7 @@ In the PASE Terminal, enter `yum update` followed by `yum upgrade`
 # Install GIT 
  
 Enter the command below in your PASE terminal.
-`yum install git`
+  -`yum install git`
 
 ![alt text](images/image-51.png)
 >*GIT has been installed successfully*
