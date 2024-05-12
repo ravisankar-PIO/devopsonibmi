@@ -533,17 +533,17 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
 
   | Question | Answer |  
   |-|-|
-  | Would you like this service to be available to all users? [n] <br> <p style="font-size:8px"> (we don't want other users to start this application)</p> | n
-  | Short Name <br> <p style="font-size:8px"> (this will be the name to start the application. So choose wisely)</p> | jenkins
+  | Would you like this service to be available to all users? [n] <br> <p style="font-size:8px;"> (we don't want other users to start this application)</p> | n
+  | Short Name <br> <p style="font-size:8px;"> (this will be the name to start the application. So choose wisely)</p> | jenkins
   | Friendly Name <br> <small>(a short description about the app)</small> | Jenkins for IBMi
-  | Start app in the current directory (/home/CECUSER)? [y] <br> <p style="font-size:8px"> (yes, we want to start the app in the current directory)</p> | y
-  | Which ports does your app run on? <br> <p style="font-size:8px"> (Enter the port# that the app is using) </p> | 9095
-  | App to be run under a unique Job Name? <br> <p style="font-size:8px"> (No, so we will leave it to blanks) </p> | <blanks>
-  | Submit to batch? <br> <p style="font-size:8px"> (No, we will run the app from within PASE environment)</p> | n
-  | Environment Variables? <br> <p style="font-size:8px"> (Since we have already setup the path variables, we will leave it as blanks)</p> | 
-  | What Other Environment Variables? <br> <p style="font-size:8px"> (Nothing here, just hit enter again)</p> | 
-  | What Other groups would this app be a part of? <br> <p style="font-size:8px"> (Nothing here, just hit enter again)</p> | 
-  | What Other services would this app be a part of? <br> <p style="font-size:8px"> (Nothing here, just hit enter again)</p> | 
+  | Start app in the current directory (/home/CECUSER)? [y] <br> <p style="font-size:8px;;"> (yes, we want to start the app in the current directory)</p> | y
+  | Which ports does your app run on? <br> <p style="font-size:8px;"> (Enter the port# that the app is using) </p> | 9095
+  | App to be run under a unique Job Name? <br> <p style="font-size:8px;"> (No, so we will leave it to blanks) </p> | <blanks>
+  | Submit to batch? <br> <p style="font-size:8px;"> (No, we will run the app from within PASE environment)</p> | n
+  | Environment Variables? <br> <p style="font-size:8px;"> (Since we have already setup the path variables, we will leave it as blanks)</p> | 
+  | What Other Environment Variables? <br> <p style="font-size:8px;"> (Nothing here, just hit enter again)</p> | 
+  | What Other groups would this app be a part of? <br> <p style="font-size:8px;"> (Nothing here, just hit enter again)</p> | 
+  | What Other services would this app be a part of? <br> <p style="font-size:8px;"> (Nothing here, just hit enter again)</p> | 
 
 
 - If all worked correctly, then you should see the below output
