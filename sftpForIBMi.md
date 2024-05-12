@@ -48,42 +48,66 @@ We will be creating a separate IBMi user profile for the SFTP access. Whoever ma
 
   ### Full access Method 
 - Login to your IBMi with a profile that has authority to create and manage user profiles. 
+
 <br>  
+
 - Enter command `Call QP2TERM` to enter the PASE Environment 
+
 <br>
+
 - We will create separate user profile for this SFTP access. Note that the login for the user SFTPUSR1 is disabled.
   `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
+
 <br>
+
 - Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.
   `mkdir /home/sftpusr1`
+
 <br>
+
 - Create a .SSH directory within the user's home directory.
 `mkdir /home/sftpusr1/.ssh`
+
 <br>
+
 - Set permissions on the user's home directory.
 `chmod 755 /home/sftpusr1`
+
 <br>
+
 - Set permissions on the user's .ssh directory.
 `chmod 700 /home/sftpusr1/.ssh`
+
 <br>
+
 - Change ownership of the home directory to the SSH user.
 `chown sftpusr1 /home/sftpusr1`
+
 <br>
+
 - Change ownership of the .SSH directory to the SSH user.
 `chown sftpusr1 /home/sftpusr1/.ssh`
+
 <br>
+
 - Change the Home directory of the sftpusr1. Note that only this folder will be accessible by the client system (my laptop)
 `system "CHGUSRPRF USRPRF(sftpusr1) HOMEDIR('/home/sftpusr1')"`
+
 <br>
+
 - Rename the public key `id_rsa.pub` to `authorized_keys` and place it in the home directory of SFTP1 user. 
   `mv /home/$USER/.ssh/id_rsa.pub /home/sftpusr1/.ssh/authorized_keys`
+
 <br>
+
 - Change ownership of the authorized_keys file to the SSH user.
 `chown sftpusr1 /home/sftpusr1/.ssh/authorized_keys`
+
 <br>
 - Set permissions on the authorized_keys file.
 `chmod 600 /home/sftpusr1/.ssh/authorized_keys`
 <br>
+
 - We will create a dummy file for testing the transfer
 `touch /home/sftpusr1/new.file`
 
