@@ -3,24 +3,31 @@
 
 >Setup IBMi to allow other systems to access it's IFS folder using SFTP
 
+We are going to setup my laptop as SFTP client (which will request for files) and IBMi as the SFTP host (which will contain the files). So in this case, my laptop will be the one that makes a request to download files. 
+
+SFTP means the ability to do FTP without password based authentication. Instead of password we will use the public/private keys. We will give the public key to the host (IBMi) and private key to the client (my laptop).
+
 It is a three Step Process where we need to,
-- [Generate Pub/Pvt Keys system](#generate-pubpvt-keys-system)
 - [Setup IBMi as remote host](#setup-ibmi-as-remote-host)
 
 
-## Generate Pub/Pvt Keys system
-- Use the SSH-keygen utility and create an RSA key with no user name. Note that the command to create RSA key will vary from system to system. Google to find out the right method.
-<br>
-- Ask the client to transfer the public key (usually with the name `id_rsa.pub`).
-<br>
-- Using WINSCP, We will park the public key in our IBMi in `/tmp` folder for now.
-  ![alt text](image-2.png)
+<p style="font-size:8px"> (No, so we will leave it to blanks) </p> 
 
-## Setup IBMi as remote host
+
+
+
+## Generate Keys
+  
 - Login to your IBMi with a profile that has authority to create and manage user profiles. 
 <br>  
 - Enter command `Call QP2TERM` to enter the PASE Environment 
 <br>
+- Start by creating the keypairs by entering the command
+  `ssh-keygen -t RSA`
+  You will be asked for multiple questions for generating the keypairs.
+  | Prompt | Response |
+  | -- | -- |
+  | Enter file in which to save the key |
 - We will create separate user profile for this SFTP access. Note that the login is disabled.
   `system "CRTUSRPRF USRPRF(SFTPUSR1) INLMNU(*SIGNOFF)"`
 <br>

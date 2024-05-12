@@ -535,7 +535,7 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
   |-|-|
   | Would you like this service to be available to all users? [n] <br> <p style="font-size:8px"> (we don't want other users to start this application)</p> | n
   | Short Name <br> <p style="font-size:8px"> (this will be the name to start the application. So choose wisely)</p> | jenkins
-  | Friendly Name <br> <p style="font-size:8px">(a short description about the app)</p> | Jenkins for IBMi
+  | Friendly Name <br> <small>(a short description about the app)</small> | Jenkins for IBMi
   | Start app in the current directory (/home/CECUSER)? [y] <br> <p style="font-size:8px"> (yes, we want to start the app in the current directory)</p> | y
   | Which ports does your app run on? <br> <p style="font-size:8px"> (Enter the port# that the app is using) </p> | 9095
   | App to be run under a unique Job Name? <br> <p style="font-size:8px"> (No, so we will leave it to blanks) </p> | <blanks>
