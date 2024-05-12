@@ -130,7 +130,7 @@ If you're running V7R2 & above,
 - SSH Daemon need to be started using a QSECOFR user profile
   - `/QOpenSys/usr/sbin/sshd`
   
-  >Note: The SSH daemon must be started with the QSECOFR user profile to activate the chroot function. Starting the SSH daemon with a profile that has QSECOFR authority will not activate the chroot function. A user profile with a UID of (0) is required to activate the chroot function. The QSECOFR user profile on the IBM i is shipped with a UID of (0).
+    >Note: The SSH daemon must be started with the QSECOFR user profile to activate the chroot function. Starting the SSH daemon with a profile that has QSECOFR authority will not activate the chroot function. A user profile with a UID of (0) is required to activate the chroot function. The QSECOFR user profile on the IBM i is shipped with a UID of (0).
 <br>
 
 - Create a HOME directory on the IBM i to store the user's SSH-related files. We will be sharing this folder to the client.
@@ -177,22 +177,25 @@ If you're running V7R2 & above,
 ## Test the connection
 - Go to the client machine (laptop) and open the terminal.
 <br>
+
 - Enter the below command to initiate an SFTP. 
   `sftp -i "C:\Users\RavisankarPandian\.ssh\goldenkey" sftpusr1@129.40.94.17`
   - *Make sure to replace the user name with your username*
   - *Make sure to replace your IBMi's IP address*
 <br>
+
 - We will change the current directory of my local machine to the Downloads folder
 `lcd Downloads`
 <br>
+
 - Let's download the `new.file` that we just created on our IBMi to my laptop
   `get new.file`
+<br>
 
 - Let's try uploading a file called `nick.jpg` from my Downloads folder to the IBMi just for fun.
   `put nick.jgp`
+<br>
 
 - Once transfer is done, let's close the connection.
 `bye`
-
-
-
+<br>
