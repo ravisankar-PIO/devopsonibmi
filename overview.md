@@ -72,9 +72,9 @@ But don't we have Turnover, Implementor, Aldon, and others already? How Git is d
   Manages Source Code | Compiling
   Keeps a history | Testing
   Enables Branching | Project Management
-  ' | Planning
-  ' | Impact Analyisis
-  ' | Deployment 
+  <io> | Planning
+  <io> | Impact Analyisis
+  <io> | Deployment 
 
 #### Develompment Models
 | Script Based | Archive Based | *Object Based* |
