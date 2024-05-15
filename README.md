@@ -31,6 +31,7 @@
   - [Chroot](#chroot)
   - [Test Cases](#test-cases)
   - [Migrate to IFS](#migrate-to-ifs)
+  - [Todos](#todos)
 - [Final Thoughts](#final-thoughts)
     - [For a Modernized IBM-i development:](#for-a-modernized-ibm-i-development)
 
@@ -252,7 +253,7 @@ wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 Launching the Jenkins app is nothing but launching the `jenkins.war` file via a JAVA command with correct parameters. It can be started via multiple methods. 
 *(Notice that I am using the **port# 9095**)*
 * **Method-1:**  Use Process Management tool like Service Commander. **(preferred)**
-  Jump to [this section]() to view how to start the application via Service-Commander.
+  Jump to [this section](#service-commander) to view how to start the application via Service-Commander.
   
 <br>
 
@@ -400,8 +401,8 @@ wget https://github.com/gitbucket/gitbucket/releases/download/4.40.0/gitbucket.w
 Launching the GitBucket app is nothing but opening the `gitbucket.war` file via a JAVA command with correct parameters. It can be started via multiple methods. 
 
 *(Notice that I am using the **port# 8085**)*
-* **Method-1: (preferred)** Start as a batch Job in Green Screen
-  Head over to the green screen and issue the command below. 
+* **Method-1: (preferred)** Start using Service Commander
+  You should already 
   ```js
   SBMJOB CMD(QSH CMD('java -jar /home/CECUSER/gitbucket.war --port=8085')) JOB(GITBUCKET)
   ```
@@ -443,6 +444,11 @@ Launching the GitBucket app is nothing but opening the `gitbucket.war` file via 
   - Click [here](https://ibmi-oss-docs.readthedocs.io/en/latest/yum/3RD_PARTY_REPOS.html) to view about the third party Repos for IBMI
   - [RPG-GIT-BOOK](https://github.com/worksofliam/rpg-git-book/blob/main/4-repository-host.md) - This is an excellent starting point for moving to GIT
 
+- Ansible
+  - Ansible for i's [github repo](https://github.com/IBM/ansible-for-i)
+  - Ansible's [documentation for IBMi](https://ibm.github.io/ansible-for-i/index.html)
+  - Ansible's [core documentation](https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html)
+  - A [blog post](https://ibm.github.io/cloud-i-blog/archivers/2020_0602_automate_your_ibm_i_tasks_with_ansible) about Automating your IBM i tasks with Ansible.
 
 ---
 # Further Research
@@ -595,12 +601,18 @@ faced an error
 
 ---
 ## Test Cases
-[unit test cases](https://github.com/worksofliam/IBMiUnit)
+- Refer [IBMiUnit](https://github.com/worksofliam/IBMiUnit) by Liam 
+- Refer [iUnit](https://github.com/i-unit/iunit/) by Wim Jongman
 
 ---
 ## Migrate to IFS
 [A tool to migrate the source members to IFS path](https://github.com/worksofliam/IBMiUnit)
 
+---
+## Todos
+* Clone the [IBMI Company System](https://github.com/IBM/ibmi-company_system), and [bob recursive](https://github.com/IBM/bob-recursive-example.git) repositories for testing the DevOps scenarios 
+* Create a script to install the pre-requisites and installations of DevOps tools
+* 
 ---
 # Final Thoughts
 - Pick the right tools required for the DevOps Practice.
