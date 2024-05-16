@@ -76,7 +76,7 @@ Follow the below steps if you decide to run the applications from the PASE/SSH T
 - Enter command `touch .profile` in order to create a new file called *.profile*
   <br>
 
-- Open the file `.profile` using VS Code's IFS Browser. If you don't see the file, then click on the refresh icon on the top right side of the IFS browser panel.
+- Open the file `.profile` using VS Code's IFS Browser. If you don't see the file, then click on the refresh icon on the top right side of the IFS browser panel. <br>
     ![alt text](images/dotprofile.png)
     <br>
   
@@ -104,12 +104,11 @@ PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w " "\\\$ ";
   touch git-prompt.sh
   ```
   <br>
-- Once an empty file is created, open the file in VS Code and copy the contents from [this](resources/git-prompt.sh) link and paste it on to the empty file and save it.
+- Once an empty file is created, open the file in VS Code and copy the entire code from [this](resources/git-prompt.sh) link and paste it on to the empty file and save it.
 
  ## Verify the setup
  Once the initial setup is complete,
-- **Disconnect the IBMI from your VS Code and reconnect again**
-- Once connected, open up the PASE terminal again by entering `Ctrl+Shift+J`. If the shell is set to bash successfully, you should see the below screen
+ - Open up a new PASE terminal by entering `Ctrl+Shift+J`. If the shell is set to bash successfully, you should see the below screen
 ![alt text](images/bashh.png)
 - Run the below command to check whether the path variable has been setup correctly.
   ```bash
