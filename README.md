@@ -59,7 +59,7 @@ Either set it via VS Code.
 
   **<p align="center">OR</p>**
   
-Enter the below command in the PASE terminal. *Don't forget to ==replace cecuser with your username==*
+Enter the below command in the PASE terminal. *Don't forget to replace cecuser with your username*
   ```bash
   /QOpenSys/pkgs/bin/chsh -s /QOpenSys/pkgs/bin/bash cecuser
   ```
@@ -83,21 +83,21 @@ Follow the below steps if you decide to run the applications from the PASE/SSH T
 - Copy paste the below content on the `.profile` file.
 
 
-```bash
-export PATH=/QOpenSys/pkgs/bin:$PATH
-export JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit
-export JENKINS_HOME=/home/CECUSER/jenkins
-export GITBUCKET_HOME=/home/CECUSER/gitbucket
-source ~/git-prompt.sh
-PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w " "\\\$ ";'$PROMPT_COMMAND
-```
->**Explanation:**<br>
->#1: The open source linux commands are available in the path `/QOpenSys/pkgs/bin`, so we are appending that location to the already available `$PATH` variable. <br>
->#2: The default JAVA version in IBMi sometimes would be 8. But Jenkins require version 11 or above. So we will tell IBMi to use the latest version of JAVA (17 in our case) for running Jenkins.<br>
->#3: We are setting up the Jenkins' application on a folder called 'jenkins'. It provides better management of application, such as the whole application can be uprooted and planted in another location if required. <br>
->#4: Similarly, we are setting the Gitbucket's application on a folder called 'gitbucket'<br>
->#5 & #6: This is required for changing the command line prompt to display your "username", "servername", "present working directory" and show the current git branch and git status at all the times.
-<br>
+  ```bash
+  export PATH=/QOpenSys/pkgs/bin:$PATH
+  export JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit
+  export JENKINS_HOME=/home/CECUSER/jenkins
+  export GITBUCKET_HOME=/home/CECUSER/gitbucket
+  source ~/git-prompt.sh
+  PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w\[\e[0m\] " "\\\$ ";'$PROMPT_COMMAND
+  ```
+  >**Explanation:**<br>
+  >#1: The open source linux commands are available in the path `/QOpenSys/pkgs/bin`, so we are appending that location to the already available `$PATH` variable. <br>
+  >#2: The default JAVA version in IBMi sometimes would be 8. But Jenkins require version 11 or above. So we will tell IBMi to use the latest version of JAVA (17 in our case) for running Jenkins.<br>
+  >#3: We are setting up the Jenkins' application on a folder called 'jenkins'. It provides better management of application, such as the whole application can be uprooted and planted in another location if required. <br>
+  >#4: Similarly, we are setting the Gitbucket's application on a folder called 'gitbucket'<br>
+  >#5 & #6: This is required for changing the command line prompt to display your "username", "servername", "present working directory" and show the current git branch and git status at all the times.
+  <br>
 
 - Create another file called `git-prompt.sh` by entering the below command.
   ```bash
@@ -109,20 +109,22 @@ PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w " "\\\$ ";
  ## Verify the setup
  Once the initial setup is complete,
  - Open up a new PASE terminal by entering `Ctrl+Shift+J`. If the shell is set to bash successfully, you should see the below screen
-![alt text](images/bashh.png)
+  ![alt text](images/bashh.png)
+  <br>
+
 - Run the below command to check whether the path variable has been setup correctly.
   ```bash
   echo -e '\n' $PATH '\n' $JAVA_HOME '\n' $JENKINS_HOME '\n' $GITBUCKET_HOME '\n'
   ```
   ![alt text](images/verify.png)
+  <br>
 
 ## Update yum packages
-In the PASE Terminal, enter the below commands,
+In the PASE Terminal, enter the below command,
 ```bash
-yum update
-yum upgrade
+yum update -y && yum upgrade -y
 ```
->**Note:** You want to run the update with caution as it might break the existing OSS applications. For that reason, it is best to use `chroot` to create separate container for this purpose. 
+>**Warning!:** You want to run the update with caution as it might break the existing OSS applications. For that reason, it is best to use `chroot` to create separate container for this purpose. 
 
 ---
 
@@ -132,10 +134,12 @@ yum upgrade
 # Install GIT 
  
 Enter the command below in your PASE terminal.
-  -`yum install git`
-
+```bash
+yum install git -y
+```
 ![alt text](images/image-51.png)
 >*GIT has been installed successfully*
+
 ---
  
 <img src="images/githublogo.jpg"  width="100">
@@ -144,14 +148,19 @@ Enter the command below in your PASE terminal.
 Let's connect our IBMi with the GitHub and try pushing (a.k.a. updating our sources) directly to the GitHub Repository.
 
 **Setup the user name and email for your local git**
+- Enter the commands below
   ```bash
-  git config --global user.name 'Ravisankar Pandian' #To add a user name for the git application.
-
-  git config --global user.email ravisankar.pandian@programmers.io #To add email for the git application 
+  git config --global user.name 'Ravisankar Pandian' 
+  git config --global user.email ravisankar.pandian@programmers.io
   ```
+  >*Make sure to enter the email ID that you use to login to your GitHub account*
+
 **Generate a public/private keypair.**
- Enter the below command in your PASE terminal. (make sure to enter the email id that you use in your github account)
-   `ssh-keygen -t ed25519 -C "ravisankar.pandian@programmers.io"`
+- Enter the below command in your PASE terminal. (make sure to enter the email id that you use in your github account)
+   ```bash
+   ssh-keygen -t ed25519 -C "ravisankar.pandian@programmers.io"
+   ```
+
 - Hit enter again to save the key pair at the default location itself. 
 - Hit enter again (no passphrase is required)
 - Notice the location of the public key and open it in your VS Code. 
@@ -164,32 +173,46 @@ Let's connect our IBMi with the GitHub and try pushing (a.k.a. updating our sour
 - Copy all the contents of the file. We need to put that into our GitHub account.
   
 **Create New SSH Key in your GitHub account**
-- Open https://github.com/settings/keys and click 'New SSH Key'. 
+- Open https://github.com/settings/keys and click `New SSH Key`. 
+  <br>
 - Enter some title, Select the key type as "authentication key", paste the previously copied public key, and finally select 'Add SSH Key"
   ![alt text](images/image-54.png)
+  <br>
+
 - Once added, you should see the below screen
   ![alt text](images/image-55.png)
+  <br>
 
 **Create a GitHub repository**
 - Let's create a new empty repository in our GitHub account.
+  <br>
+
 - Click on Repository >> Click New
   ![alt text](images/image-56.png)
+  <br>
+
 - Enter the repository name, some meaningful description, set it public, add a README.md file and click create repository.
   ![alt text](images/image-57.png)
+  <br>
+
 - Nice, we have our own GitHub repository now.
   ![alt text](images/image-58.png)
+  <br>
+
 - Click on the green `<> Code` button, click on `SSH` and copy the URL
    ![alt text](images/image-59.png)
 <br>
+
 - FYI: This is the command that I just copied
 `git@github.com:ravisankar-PIO/gitonibmi.git`
 
 **Clone the GitHub Repository to your IBMi**
 - Go to the PASE Terminal in VS Code and enter
+ 
   ```bash
   git clone git@github.com:ravisankar-PIO/gitonibmi.git
   ```
-Enter `yes` if it asks for anything about Fingerprint and Keys. Now we have successfully cloned the GitHub Repository to our IBMi's IFS folder.
+  Enter `yes` if it asks for anything about Fingerprint and Keys. Now we have successfully cloned the GitHub Repository to our IBMi's IFS folder.
 
   ![alt text](images/image-60.png)
 
@@ -197,31 +220,45 @@ Enter `yes` if it asks for anything about Fingerprint and Keys. Now we have succ
 
 **Create a simple sqlrpgle program**
 - Let's create an SQLRPGLE program which inserts a record into some file for every time it is called.
+  <br>
+
 - Go to the PASE Terminal in VS Code and enter below command to *navigate to our repository folder*
   ```bash 
   cd gitonibmi
   ```
+  <br>
+
+
 - *Now initialize the git repository*
   ```bash
   git init
   ```
--  => *And create a new SQLRPGLE program*
+  <br>
+
+  
+- *And create a new SQLRPGLE program*
+  ```bash
+  touch buildr.sqlrpgle
+  ```
+  <br>
+
 - Once created, open the same file in your VS Code editor via the IFS Browser.
   ![alt text](images/image-62.png)
 <br>
+
 - Copy paste the below code into the `buildr.sqlrpgle` file and save it.
-```js
-**free
-dcl-s count int(10);
-dcl-s note varchar(50);
+  ```js
+  **free
+  dcl-s count int(10);
+  dcl-s note varchar(50);
 
-exec sql SELECT COUNT(*) INTO :count FROM ravi.buildpf;
-count += 1;
-note = 'Build# ' + %char(count);
-exec sql INSERT INTO ravi.buildpf (note) VALUES (:note);
+  exec sql SELECT COUNT(*) INTO :count FROM ravi.buildpf;
+  count += 1;
+  note = 'Build# ' + %char(count);
+  exec sql INSERT INTO ravi.buildpf (note) VALUES (:note);
 
-*inlr = *on;
-```
+  *inlr = *on;
+  ```
 
 **Commit the program**
 - Once you saved the sqlrpgle program, head over to the PASE Terminal and enter the below commands one by one. Read below for explanation
@@ -238,9 +275,11 @@ exec sql INSERT INTO ravi.buildpf (note) VALUES (:note);
 
 - Once the changes are pushed, you should see a message like something below
   ![alt text](images/image-63.png)
+<br>
 
 - Head over to the GitHub repository to check if the changes are updated there.
   ![alt text](images/image-64.png)
+<br>
 
   **Congratulations! You have successfully modernized the IBM i development to GitHub.**
 
@@ -280,13 +319,16 @@ Launching the Jenkins app is nothing but launching the `jenkins.war` file via a 
 
  ### Initial Configuration
 - If all worked correctly, then a default admin password will be stored on the location `/jenkins/secrets/InitialAdminPassword` 
+  <br>
+
 - Open the file `initialAdminPassword` and copy the contents of that file to your clipboard.
   ![alt text](images/image-67.png)
-
+<br>
 
 - **Jenkins initial setup in browser**
 Head over to the browser and type in the IP address of the IBMi followed by the port# that we defined earlier. In my case, it is `http://129.40.94.17:9095/`. Paste the admin password that we just copied a while ago to unlock Jenkins. 
 ![alt text](images/image-68.png)
+<br>
 
   Remember to select =="Install suggested plugins"==
   *(**Note**: It will take some time to load the next screen. Don't click more than once, as it might end up in error)*
@@ -337,7 +379,8 @@ Head over to the browser and type in the IP address of the IBMi followed by the 
   - Kind - SSH Username with Private key
   - Scope - Global
   - ID - anything you like
-  - Private key - Select `enter directly` => click add => Open the private key from your ssh folder as below => copy the entire content => finally paste it on Jenkins window.
+  - Private key - Select `enter directly` => click add => Open the private key from your ssh folder as below => copy the entire content => finally paste it on Jenkins window.<br>
+  
   ![alt text](images/image-74.png) <br> 
   - Then click add
   - Then, click on the credentials drop down, and select the one that has your user name.
@@ -352,8 +395,10 @@ Head over to the browser and type in the IP address of the IBMi followed by the 
 **Add Build Steps**
 - Scroll down to find `Build Steps` and click on it, then select `Execute Shell`
   ![alt text](images/image-77.png)
-- Enter the below PASE command 
-  `system "CALL PGM(RAVI/BUILDR)"`
+- Enter the below command to call our newly created BUILDR program.
+  ```bash
+  system "CALL PGM(RAVI/BUILDR)"
+  ```
   This means whenever the GitHub repository is committed (i.e. updated), we will call a program called `buildr` 
   <br>
 - That's it! We will save the Job Configuration now.
@@ -370,7 +415,7 @@ Are you seeing this error below and wondering what you did wrong? Don't worry as
 
 **Let's try it in action!**
 - For the sake of simplicity, let's update the `README.md` file via VS Code and push the changes to the GitHub repo. We will expect the Jenkins to pickup the change and process the job.
-- Open the `README.md` file
+- Open the `README.md` file<br>
   ![alt text](images/image-86.png) 
   <br>
 - Add another line and save it.
@@ -395,7 +440,11 @@ Are you seeing this error below and wondering what you did wrong? Don't worry as
 - Let's check our physical file if the shell script got executed correctly.
   `select * from ravi/buildpf`
   ![alt text](images/image-90.png)
+
   >Nice! It is working
+
+<br>
+<br>
 
 ---
 <img src="https://gitbucket.github.io/img/logo-gitbucket.png">
