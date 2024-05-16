@@ -10,7 +10,6 @@
   - [Set Shell to BASH](#set-shell-to-bash)
   - [Set Open Source path/env variables](#set-open-source-pathenv-variables)
     - [Setup for PASE/SSH terminal](#setup-for-pasessh-terminal)
-    - [Setup for IBMi Green screen (Optional)](#setup-for-ibmi-green-screen-optional)
   - [Verify the setup](#verify-the-setup)
   - [Update yum packages](#update-yum-packages)
 - [Install GIT](#install-git)
@@ -72,11 +71,17 @@ In order to be able to run the linux commands without specifying the location of
 ### Setup for PASE/SSH terminal
 Follow the below steps if you decide to run the applications from the PASE/SSH Terminal
 - Navigate to your home folder by entering `cd ~`
-- Enter command `touch .profile` in order to create a new file called *.profile*
-- Open the file `.profile` using VS Code's IFS Browser
+  <br>
   
-  ![alt text](images/dotprofile.png)
+- Enter command `touch .profile` in order to create a new file called *.profile*
+  <br>
+
+- Open the file `.profile` using VS Code's IFS Browser. If you don't see the file, then click on the refresh icon on the top right side of the IFS browser panel.
+    ![alt text](images/dotprofile.png)
+    <br>
+  
 - Copy paste the below content on the `.profile` file.
+
 
 ```bash
 export PATH=/QOpenSys/pkgs/bin:$PATH
@@ -84,25 +89,22 @@ export JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit
 export JENKINS_HOME=/home/CECUSER/jenkins
 export GITBUCKET_HOME=/home/CECUSER/gitbucket
 source ~/git-prompt.sh
-PROMPT_COMMAND='__posh_git_ps1 "\u@\h:\w " "\\\$ ";'$PROMPT_COMMAND
+PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w " "\\\$ ";'$PROMPT_COMMAND
 ```
 >**Explanation:**<br>
 >#1: The open source linux commands are available in the path `/QOpenSys/pkgs/bin`, so we are appending that location to the already available `$PATH` variable. <br>
 >#2: The default JAVA version in IBMi sometimes would be 8. But Jenkins require version 11 or above. So we will tell IBMi to use the latest version of JAVA (17 in our case) for running Jenkins.<br>
 >#3: We are setting up the Jenkins' application on a folder called 'jenkins'. It provides better management of application, such as the whole application can be uprooted and planted in another location if required. <br>
->#4: Similarly, we are setting the Gitbucket's application on a folder called 'gitbucket'
+>#4: Similarly, we are setting the Gitbucket's application on a folder called 'gitbucket'<br>
+>#5 & #6: This is required for changing the command line prompt to display your "username", "servername", "present working directory" and show the current git branch and git status at all the times.
+<br>
 
-### Setup for IBMi Green screen (Optional)
-If you decide to start the application from the green screen, then you have to run these commands.
-  ```js
-  ADDENVVAR ENVVAR('JAVA_HOME') VALUE('/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit') LEVEL(*SYS) REPLACE(*YES)
-  ADDENVVAR ENVVAR('JENKINS_HOME') VALUE('/home/CECUSER/jenkins') LEVEL(*SYS) REPLACE(*YES)
-  ADDENVVAR ENVVAR('GITBUCKET_HOME') VALUE('/home/CECUSER/gitbucket') LEVEL(*SYS) REPLACE(*YES)
-  /* note: You need to have ALLOBJ or SECOFR authority to run these commands  */
+- Create another file called `git-prompt.sh` by entering the below command.
+  ```bash
+  touch git-prompt.sh
   ```
-  ![alt text](images/image-50.png)
-
-  >Note: The one time setup of Environment Variables in green screen is optional. But it doesn't hurt to setup to prevent surprises when running the applications from green screen.
+  <br>
+- Once an empty file is created, open the file in VS Code and copy the contents from [this](resources/git-prompt.sh) link and paste it on to the empty file and save it.
 
  ## Verify the setup
  Once the initial setup is complete,
