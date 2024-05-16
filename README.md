@@ -83,11 +83,16 @@ export PATH=/QOpenSys/pkgs/bin:$PATH
 export JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit
 export JENKINS_HOME=/home/CECUSER/jenkins
 export GITBUCKET_HOME=/home/CECUSER/gitbucket
+source ~/git-prompt.sh
+PROMPT_COMMAND='__posh_git_ps1 "\u@\h:\w " "\\\$ ";'$PROMPT_COMMAND
 ```
 >**Explanation:**
 >#1: The open source linux commands are available in the path `/QOpenSys/pkgs/bin`, so we are appending that location to the already available `$PATH` variable. 
+
 >#2: The default JAVA version in IBMi sometimes would be 8. But Jenkins require version 11 or above. So we will tell IBMi to use the latest version of JAVA (17 in our case) for running Jenkins.
+
 >#3: We are setting up the Jenkins' application on a folder called 'jenkins'. It provides better management of application, such as the whole application can be uprooted and planted in another location if required. 
+
 >#4: Similarly, we are setting the Gitbucket's application on a folder called 'gitbucket'
 
 ### Setup for IBMi Green screen (Optional)
