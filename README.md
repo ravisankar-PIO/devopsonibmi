@@ -671,8 +671,8 @@ faced an error
 - Let's say if we have an IBMi server that already runs some OSS software in it that requires certain version of Node.JS or Python to function. We don't want to break/update that version for our DevOps practices. So we can create containers where the entire IBMi OSS environment would be run independently. 
 
 ![alt text](images/chrootdiag.png)
->Further information about chroot can be found [here](https://docs.google.com/presentation/d/1t78A1YZlr88aYuEM2638U0nQywW4VQh_4H2RCtayZQo/edit#slide=id.g736c0ce3c_0_0)
->A [blog post](https://www.krengeltech.com/2016/01/a-root-change-for-the-better/) about Chroot
+>Further information about chroot can be found [here](https://docs.google.com/presentation/d/1t78A1YZlr88aYuEM2638U0nQywW4VQh_4H2RCtayZQo/edit#slide=id.g736c0ce3c_0_0)<br>
+>A [blog post](https://www.krengeltech.com/2016/01/a-root-change-for-the-better/) about Chroot<br>
 >Another [one](https://www.krengeltech.com/2016/02/a-root-change-for-the-better-part-ii/)
 
 <br>
@@ -716,6 +716,9 @@ May be a **self hosted GitBucket**, running along with **Jenkins**, that trigger
 
 ![final thoughts](https://user-images.githubusercontent.com/3708366/284319322-90b97bac-0b39-418f-a24e-da62338c26a1.png)
 
+<br>
+
+**Usage of Self-Hosted GitBucket instead of the GitHub**
 
 ![alt text](images/image-42.png)
 
