@@ -114,7 +114,11 @@ If you decide to start the application from the green screen, then you have to r
   ![alt text](images/verify.png)
 
 ## Update yum packages
-In the PASE Terminal, enter `yum update` followed by `yum upgrade`
+In the PASE Terminal, enter the below commands,
+```bash
+yum update
+yum upgrade
+```
 >**Note:** You want to run the update with caution as it might break the existing OSS applications. For that reason, it is best to use `chroot` to create separate container for this purpose. 
 
 ---
@@ -179,7 +183,9 @@ Let's connect our IBMi with the GitHub and try pushing (a.k.a. updating our sour
 
 **Clone the GitHub Repository to your IBMi**
 - Go to the PASE Terminal in VS Code and enter
-`git clone git@github.com:ravisankar-PIO/gitonibmi.git`
+  ```bash
+  git clone git@github.com:ravisankar-PIO/gitonibmi.git
+  ```
 Enter `yes` if it asks for anything about Fingerprint and Keys. Now we have successfully cloned the GitHub Repository to our IBMi's IFS folder.
 
   ![alt text](images/image-60.png)
@@ -188,10 +194,15 @@ Enter `yes` if it asks for anything about Fingerprint and Keys. Now we have succ
 
 **Create a simple sqlrpgle program**
 - Let's create an SQLRPGLE program which inserts a record into some file for every time it is called.
-- Go to the PASE Terminal in VS Code and enter
-- `cd gitonibmi` =>  *to navigate to our repository folder*
-- `git init` => *to initialize the git repository*
-- `touch buildr.sqlrpgle` => *to create a new SQLRPGLE program*
+- Go to the PASE Terminal in VS Code and enter below command to *navigate to our repository folder*
+  ```bash 
+  cd gitonibmi
+  ```
+- *Now initialize the git repository*
+  ```bash
+  git init
+  ```
+-  => *And create a new SQLRPGLE program*
 - Once created, open the same file in your VS Code editor via the IFS Browser.
   ![alt text](images/image-62.png)
 <br>
