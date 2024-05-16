@@ -108,7 +108,7 @@ Follow the below steps if you decide to run the applications from the PASE/SSH T
 
  ## Verify the setup
  Once the initial setup is complete,
- - Open up a new PASE terminal by entering `Ctrl+Shift+J`. If the shell is set to bash successfully, you should see the below screen
+ - Open up a new PASE terminal by entering `Ctrl+Shift+J`. If the shell is set to bash successfully, you should see the below screen<br>
   ![alt text](images/bashh.png)
   <br>
 
@@ -125,6 +125,9 @@ In the PASE Terminal, enter the below command,
 yum update -y && yum upgrade -y
 ```
 >**Warning!:** You want to run the update with caution as it might break the existing OSS applications. For that reason, it is best to use `chroot` to create separate container for this purpose. 
+
+<br>
+<br>
 
 ---
 
@@ -285,6 +288,8 @@ Let's connect our IBMi with the GitHub and try pushing (a.k.a. updating our sour
 
   ![alt text](images/image-83.png)
 
+<br>
+<br>
 
 ---
 <img src="images/jenkinslogo.jpg"  width="150">
@@ -591,13 +596,17 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
 
 ---
 ## Service-Commander
-- Install service commander using
-  `yum install service-commander`
+- Install service commander using the below command
+  ```bash
+  yum install service-commander -y
+  ```
 - Now we will do the one time setup to include the Jenkins app in our service commander utility.
-- We already knew the command to start the jenkins app from the PASE Terminal which is 
+- Now the actual command to start the jenkins app from the PASE Terminal is 
   `java -jar /home/CECUSER/jenkins.war --httpPort=9095`
-- We will just add `scinit` at the front to start the setup, that is
-  `scinit java -jar /home/CECUSER/jenkins.war --httpPort=9095`
+- We will just add `scinit` at the front to start the setup. So run the below command
+  ```bash
+  scinit java -jar /home/CECUSER/jenkins.war --httpPort=9095
+  ```
 - Service commander is an intelligent tool that will ask us series of questions in order to be able to do the intial setup.
 
   | Question | Answer |  
@@ -617,11 +626,14 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
 
 - If all worked correctly, then you should see the below output
   ![alt text](images/image-84.png)
+  <br>
 
 - Now let us start the application by entering
   `sc start jenkins`
   ![alt text](images/image-85.png)
 
+<br>
+<br>
 
 ---
 
@@ -649,6 +661,8 @@ faced an error
    `makei build`
 
     ![alt text](images/gmakebuild.png)
+<br>
+<br>
 
 ---
 
@@ -661,21 +675,32 @@ faced an error
 >A [blog post](https://www.krengeltech.com/2016/01/a-root-change-for-the-better/) about Chroot
 >Another [one](https://www.krengeltech.com/2016/02/a-root-change-for-the-better-part-ii/)
 
+<br>
+<br>
 
 ---
 ## Test Cases
 - Refer [IBMiUnit](https://github.com/worksofliam/IBMiUnit) by Liam 
 - Refer [iUnit](https://github.com/i-unit/iunit/) by Wim Jongman
 
+<br>
+<br>
+
 ---
 ## Migrate to IFS
 [A tool to migrate the source members to IFS path](https://github.com/worksofliam/IBMiUnit)
+
+<br>
+<br>
 
 ---
 ## Todos
 * Clone the [IBMI Company System](https://github.com/IBM/ibmi-company_system), and [bob recursive](https://github.com/IBM/bob-recursive-example.git) repositories for testing the DevOps scenarios 
 * Create a script to install the pre-requisites and installations of DevOps tools
-* 
+
+<br>
+<br>
+
 ---
 # Final Thoughts
 - Pick the right tools required for the DevOps Practice.
