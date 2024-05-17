@@ -639,7 +639,7 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
   ```bash
   scinit java -jar /home/CECUSER/GitBucket.war --port=8085
   ```
-- and answer the questions as below
+- and answer the questions below
 
   | Question | Answer |  
   |-|-|
