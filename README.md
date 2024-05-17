@@ -12,6 +12,7 @@
     - [Setup for PASE/SSH terminal](#setup-for-pasessh-terminal)
   - [Verify the setup](#verify-the-setup)
   - [Update yum packages](#update-yum-packages)
+  - [Install](#install)
 - [Install GIT](#install-git)
 - [Setup GITHUB](#setup-github)
 - [Setup Jenkins](#setup-jenkins)
@@ -26,6 +27,8 @@
   - [GitLab](#gitlab)
   - [PM2](#pm2)
   - [Service-Commander](#service-commander)
+    - [Startup Jenkins](#startup-jenkins)
+    - [Startup GitBucket](#startup-gitbucket)
   - [Gmake or BOB?](#gmake-or-bob)
   - [Chroot](#chroot)
   - [Test Cases](#test-cases)
@@ -88,7 +91,7 @@ Follow the below steps if you decide to run the applications from the PASE/SSH T
   export JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit
   export JENKINS_HOME=/home/CECUSER/jenkins
   export GITBUCKET_HOME=/home/CECUSER/gitbucket
-  source ~/git-prompt.sh
+  source ~/.git-prompt.sh
   PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w\[\e[0m\] " "\\\$ ";'$PROMPT_COMMAND
   ```
   >**Explanation:**<br>
@@ -129,6 +132,7 @@ yum update -y && yum upgrade -y
 <br>
 <br>
 
+## Install 
 ---
 
 <img src="images/gitlogo.png"  width="75">
@@ -469,21 +473,18 @@ wget https://github.com/gitbucket/gitbucket/releases/download/4.40.0/gitbucket.w
 Launching the GitBucket app is nothing but opening the `gitbucket.war` file via a JAVA command with correct parameters. It can be started via multiple methods. 
 
 *(Notice that I am using the **port# 8085**)*
-* **Method-1: (preferred)** Start using Service Commander
-  You should already 
-  ```js
-  SBMJOB CMD(QSH CMD('java -jar /home/CECUSER/gitbucket.war --port=8085')) JOB(GITBUCKET)
-  ```
-    <br>
-* **Method-2:** Start directly in an interactive SSH sesion
+
+* **Method-1:** Start directly in an interactive SSH sesion
   Head over to the green screen and issue the command below. 
   ```bash
   java -jar /home/CECUSER/gitbucket.war --port=8085
   ```
 <br>
 
-* **Method-3:** Use Process Management tool like PM2
-  Jump to [this section](#pm2) to view how to start the application.
+* **Method-2: (Preferred)** Use [Service Commander](#service-commander) to start the tool.
+
+<br>
+<br>
 
 ---
 # Footnotes/References
@@ -600,6 +601,7 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
   ```bash
   yum install service-commander -y
   ```
+### Startup Jenkins
 - Now we will do the one time setup to include the Jenkins app in our service commander utility.
 - Now the actual command to start the jenkins app from the PASE Terminal is 
   `java -jar /home/CECUSER/jenkins.war --httpPort=9095`
@@ -631,6 +633,37 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
 - Now let us start the application by entering
   `sc start jenkins`
   ![alt text](images/image-85.png)
+
+### Startup GitBucket
+- Run the below command
+  ```bash
+  scinit java -jar /home/CECUSER/GitBucket.war --port=8085
+  ```
+- and answer the questions as below
+
+  | Question | Answer |  
+  |-|-|
+  | Would you like this service to be available to all users? [n] <br> <p style="font-size:8px;"> (we don't want other users to start this application)</p> | n
+  | Short Name <br> <p style="font-size:8px;"> (this will be the name to start the application. So choose wisely)</p> | gitbucket
+  | Friendly Name <br> <small>(a short description about the app)</small> | GitBucket for IBMi
+  | Start app in the current directory (/home/CECUSER)? [y] <br> <p style="font-size:8px;;"> (yes, we want to start the app in the current directory)</p> | y
+  | Which ports does your app run on? <br> <p style="font-size:8px;"> (Enter the port# that the app is using) </p> | 9095
+  | App to be run under a unique Job Name? <br> <p style="font-size:8px;"> (No, so we will leave it to blanks) </p> | <blanks>
+  | Submit to batch? <br> <p style="font-size:8px;"> (No, we will run the app from within PASE environment)</p> | n
+  | Environment Variables? <br> <p style="font-size:8px;"> (Since we have already setup the path variables, we will leave it as blanks)</p> | 
+  | What Other Environment Variables? <br> <p style="font-size:8px;"> (Nothing here, just hit enter again)</p> | 
+  | What Other groups would this app be a part of? <br> <p style="font-size:8px;"> (Nothing here, just hit enter again)</p> | 
+  | What Other services would this app be a part of? <br> <p style="font-size:8px;"> (Nothing here, just hit enter again)</p> | 
+
+
+- If all worked correctly, then you should see the below output
+  
+  <br>
+
+- Now let us start the application by entering
+  `sc start GitBucket`
+  
+
 
 <br>
 <br>
