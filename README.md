@@ -34,6 +34,7 @@
   - [Test Cases](#test-cases)
   - [Migrate to IFS](#migrate-to-ifs)
   - [Todos](#todos)
+  - [Local vs Cloud GIT](#local-vs-cloud-git)
 - [Final Thoughts](#final-thoughts)
     - [For a Modernized IBM-i development:](#for-a-modernized-ibm-i-development)
 
@@ -92,14 +93,14 @@ Follow the below steps if you decide to run the applications from the PASE/SSH T
   export JENKINS_HOME=/home/CECUSER/jenkins
   export GITBUCKET_HOME=/home/CECUSER/gitbucket
   source ~/.git-prompt.sh
-  PROMPT_COMMAND='__posh_git_ps1 "\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w\[\e[0m\] " "\\\$ ";'$PROMPT_COMMAND
+  PROMPT_COMMAND='__posh_git_ps1 "${VIRTUAL_ENV:+(`basename $VIRTUAL_ENV`)}\[\e[32m\]\u\[\e[0m\]@\h:\[\e[33m\]\w\[\e[0m\] " "\\\$ ";'$PROMPT_COMMAND
   ```
   >**Explanation:**<br>
   >#1: The open source linux commands are available in the path `/QOpenSys/pkgs/bin`, so we are appending that location to the already available `$PATH` variable. <br>
   >#2: The default JAVA version in IBMi sometimes would be 8. But Jenkins require version 11 or above. So we will tell IBMi to use the latest version of JAVA (17 in our case) for running Jenkins.<br>
   >#3: We are setting up the Jenkins' application on a folder called 'jenkins'. It provides better management of application, such as the whole application can be uprooted and planted in another location if required. <br>
   >#4: Similarly, we are setting the Gitbucket's application on a folder called 'gitbucket'<br>
-  >#5 & #6: This is required for changing the command line prompt to display your "username", "servername", "present working directory" and show the current git branch and git status at all the times.
+  >#5 & #6: This is required for changing the command line prompt to display your "python virtual environment(if activated)" "username", "servername", "present working directory" and show the current git branch and git status at all the times.
   <br>
 
 - Create another file called `git-prompt.sh` by entering the below command.
@@ -481,7 +482,7 @@ Launching the GitBucket app is nothing but opening the `gitbucket.war` file via 
   ```
 <br>
 
-* **Method-2: (Preferred)** Use [Service Commander](#service-commander) to start the tool.
+* **Method-2: (Preferred)** Use [Service Commander](#startup-gitbucket) to start the tool.
 
 <br>
 <br>
@@ -735,6 +736,18 @@ faced an error
 <br>
 
 ---
+
+## Local vs Cloud GIT
+ **Local/On Prem GIT Tools**
+ - GitBucket on IBMi
+ - GitLab on Linux
+ - Klaus Git Viewer on IBMi
+
+<br>
+<br>
+
+---
+
 # Final Thoughts
 - Pick the right tools required for the DevOps Practice.
   - GitHub **(Prop & Cloud)**, GitBucket **(OSS & On-Prem)**, GitLab or BitBucket
