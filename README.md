@@ -83,7 +83,7 @@ Follow the below steps if you decide to run the applications from the PASE/SSH T
 - Open the file `.profile` using VS Code's IFS Browser. If you don't see the file, then click on the refresh icon on the top right side of the IFS browser panel. <br>
     ![alt text](images/dotprofile.png)
     <br>
-  
+    
 - Copy paste the below content on the `.profile` file.
 
 
