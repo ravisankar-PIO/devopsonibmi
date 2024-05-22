@@ -27,6 +27,8 @@ git config --global user.email ravi@ravi.com #To add email for the git applicati
 git config --global core.editor "code --wait" #to setup the default editor as vscode. the --wait flag is to keep the window open until we close it
 
 git config --global -e # will open the config file for us to edit
+
+ git config --global init.defaultBranch main # set the defaultBranch to Main
 ```
 
 
