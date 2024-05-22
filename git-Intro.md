@@ -69,7 +69,7 @@ Settings are applied only for the current Repository
 
 git commit # to commit the staged files for change
 git commit -m 'commit message' # to commit along with a short commit message
-git push # to push the committed files to the master branch?
+git push # to push the committed files to the remote branch
 git config --global user.name 'Ravisankar Pandian' # to add name for the github?
 git config --global user.email 'ravi@ravi.com' # to add email for the github?
 
