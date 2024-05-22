@@ -5,6 +5,7 @@
   - [Local Level](#local-level)
 - [Usage](#usage)
   - [Cheat Sheet](#cheat-sheet)
+  - [Visual helper](#visual-helper)
 
 
 # Installation
@@ -76,3 +77,6 @@ git config --global user.email 'ravi@ravi.com' # to add email for the github?
 ```
 ## Cheat Sheet
 Click [here](resources/git.pdf) to view the cheat sheet for git commands.
+
+## Visual helper
+A good git visual tool that can be used to learn the branching and pushing in Git. Click this [link](https://git-school.github.io/visualizing-git/#free-remote)
