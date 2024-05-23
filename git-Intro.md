@@ -55,12 +55,6 @@ Settings are applied only for the current Repository
 
 
 ```bash
-# 
-  
-# 
-
-
-
 # to add all the files to the staging area
   git add . 
 # This will automatically recognize the deleted file.
@@ -73,6 +67,15 @@ git commit -m 'commit message' # to commit along with a short commit message
 git push # to push the committed files to the remote branch
 git config --global user.name 'Ravisankar Pandian' # to add name for the github?
 git config --global user.email 'ravi@ravi.com' # to add email for the github?
+git log --graph --decorate --oneline # to display the git structure
+git reset --hard HEAD~1 # to undo the last done commit
+git reset --soft HEAD~1 # ????
+git reset HEAD~1 # to undo the last commit and set -1 position back
+git revert HEAD # to plop another commit(C3) after the current commit(C2), but this C3 will be a replica of C1
+git branch bugfix # to create a new branch called bugfix
+git checkout bugfix # to move the HEAD to the bugfix branch
+git checkout -b bugfix # combines the above two steps into one
+git branch -f bugfix HEAD~1 # move the current branch to a position -1 from HEAD
 
 ```
 ## Cheat Sheet
