@@ -73,13 +73,27 @@ git reset --soft HEAD~1 # ????
 git reset HEAD~1 # to undo the last commit and set -1 position back
 git revert HEAD # to plop another commit(C3) after the current commit(C2), but this C3 will be a replica of C1
 git branch bugfix # to create a new branch called bugfix
+git branch bugWork c7^^2^ # one step up from C7, go to second parent in merge commit, then one step up, then create a branch called bugWork
+git branch -f bugfix HEAD~1 # move the current branch to a position -1 from HEAD
+git branch -f bugFix c4
 git checkout bugfix # to move the HEAD to the bugfix branch
 git checkout -b bugfix # combines the above two steps into one
-git branch -f bugfix HEAD~1 # move the current branch to a position -1 from HEAD
-
+git checkout HEAD~2 # move up 2 generations
+git checkout HEAD^ # move to the first parent in a merge commit
+git checkout HEAD^2 # move to the second parent in a merge commit
+git cherry_pick c1 c2 c3 # cherry pick the commit to append to the current HEAD position
+git rebase c1 # Drops the current branch and appends to the C1 in a linear way.
+git rebase c1 c5 # Takes the independent parent branches of C1 and appends it to the C5
+git rebase -i HEAD~1 # interactively select, omit, rearrange the commits to rebase.
+git tag t1 c1 # adds a tag t1 to the commit c1. Once added, we can use tags and commits interchangeably
+git describe <branch> # shows the nearest anchor tag above, how many commits is current head is ahead of it, and the current head's hash.
 ```
 ## Cheat Sheet
 Click [here](resources/git.pdf) to view the cheat sheet for git commands.
 
 ## Visual helper
 A good git visual tool that can be used to learn the branching and pushing in Git. Click this [link](https://git-school.github.io/visualizing-git/#free-remote)
+
+Learn git branching via visual game [here](https://learngitbranching.js.org/)
+
+Before you make irreplaceable damage to your git, use the [firstAidGit](https://firstaidgit.io/#/) for remedy.
