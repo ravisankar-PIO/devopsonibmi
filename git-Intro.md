@@ -97,3 +97,5 @@ A good git visual tool that can be used to learn the branching and pushing in Gi
 Learn git branching via visual game [here](https://learngitbranching.js.org/)
 
 Before you make irreplaceable damage to your git, use the [firstAidGit](https://firstaidgit.io/#/) for remedy.
+
+added a new line
