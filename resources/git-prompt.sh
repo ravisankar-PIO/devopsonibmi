@@ -1,6 +1,12 @@
 # bash/zsh git prompt support
 #
-#    Copyright (C) 2022 David Xu
+# ------------------------------------------------------------------------- #
+# Program       : gitprompt.sh
+# Author        : Ravisankar Pandian
+# Company       : Programmers.io
+# Date Written  : 22/05/2024
+# Inspired from : https://github.com/lyze/posh-git-sh
+# ------------------------------------------------------------------------- #
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

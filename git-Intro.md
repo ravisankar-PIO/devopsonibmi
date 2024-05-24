@@ -87,6 +87,7 @@ git rebase c1 c5 # Takes the independent parent branches of C1 and appends it to
 git rebase -i HEAD~1 # interactively select, omit, rearrange the commits to rebase.
 git tag t1 c1 # adds a tag t1 to the commit c1. Once added, we can use tags and commits interchangeably
 git describe <branch> # shows the nearest anchor tag above, how many commits is current head is ahead of it, and the current head's hash.
+
 ```
 ## Cheat Sheet
 Click [here](resources/git.pdf) to view the cheat sheet for git commands.
