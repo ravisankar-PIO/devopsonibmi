@@ -1,0 +1,9 @@
+name: GitBucket on IBMi
+dir: /home/CECUSER/gitbucket
+start_cmd: java -jar '/home/CECUSER/gitbucket/gitbucket.war' '--port=8085'
+check_alive: '8085'
+batch_mode: 'false'
+environment_vars:
+- PATH=/QOpenSys/pkgs/bin:/QOpenSys/usr/bin:/usr/ccs/bin:/QOpenSys/usr/bin/X11:/usr/sbin:.:/usr/bin
+- JAVA_HOME=/QOpenSys/QIBM/ProdData/JavaVM/jdk17/64bit
+- GITBUCKET_HOME=/home/CECUSER/gitbucket
