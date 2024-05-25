@@ -467,7 +467,7 @@ Gitbucket is a JAVA based SCM tool which can be run on IBMi. This is an Open Sou
 Run the below commands in your PASE terminal
 ```bash
 cd ~ 
-wget https://github.com/gitbucket/gitbucket/releases/download/4.40.0/gitbucket.war
+wget https://github.com/gitbucket/gitbucket/releases/download/4.41.0/gitbucket.war
 ```
 
 **Start GitBucket using the Java Command**
