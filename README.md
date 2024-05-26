@@ -672,7 +672,7 @@ PM2 is a process management app (built on Node.js) which is like an enhanced Tas
 ---
 
 ## Gmake or BOB?
-Gmake or BOB can be used to compile the objects directly from the IFS path, without the need to have source members as a middle man. 
+Gmake or BOB can be used to compile the objects directly from the IFS path, without the need to have source members as a middle man.   
 
 *Following [this](https://ibm.github.io/ibmi-bob/#/getting-started/installation) article for BOB*
 
