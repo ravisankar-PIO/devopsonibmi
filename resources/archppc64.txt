@@ -1,0 +1,5 @@
+https://repo.archlinuxpower.org/base/powerpc64/
+
+https://archlinuxpower.org/
+
+https://github.com/leonard112/assembly-tictactoe
