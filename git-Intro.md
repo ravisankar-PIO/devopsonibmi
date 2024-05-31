@@ -99,4 +99,4 @@ Learn git branching via visual game [here](https://learngitbranching.js.org/)
 
 Before you make irreplaceable damage to your git, use the [firstAidGit](https://firstaidgit.io/#/) for remedy.
 
-added a new line
+![alt text](images/gitstaging.png)
