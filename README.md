@@ -729,8 +729,8 @@ faced an error
 
 ---
 ## Todos
-* Clone the [IBMI Company System](https://github.com/IBM/ibmi-company_system), and [bob recursive](https://github.com/IBM/bob-recursive-example.git) repositories for testing the DevOps scenarios 
-* Create a script to install the pre-requisites and installations of DevOps tools
+* Clone the [IBMI Company System](https://github.com/IBM/ibmi-company_system), and [bob recursive](https://github.com/IBM/bob-recursive-example.git) repositories for testing the DevOps scenarios - **Done**
+* Create a script to install the pre-requisites and installations of DevOps tools - **Done**
 
 <br>
 <br>

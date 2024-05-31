@@ -1,8 +1,8 @@
 # Ansible changed
 
-![alt text](image-2.png)
+![alt text](images/ansible1.png)
 
-![alt text](image-4.png)
+![alt text](images/ansible2.png)
 
 
 # Question:

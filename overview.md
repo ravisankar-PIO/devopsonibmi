@@ -137,15 +137,21 @@ CI/CD is a practice where developers regularly merge their code changes into a c
 A built in RPM command which will create our own `/QOpenSys ` directory
 
 # Workflow
-Simple Workflow
-![alt text](image.png)
+![alt text](images/DevOpsWorkflow.jpg)
 
-Complex Workflow
-![alt text](image-1.png)
+1. Create Issue Task
+2. Use Webhooks to create task-branch for the task
+3. Use webhooks to create a task-lib for the task in IBMi Dev
+4. Commit the changes to the task-branch
+5. Trigger the Unit Test Cases (via CI/CD software)
+6. Create a PR to merge the code to the main branch
+7. Trigger the copy sources & compile objects actions in the Dev Main Library
+8. Trigger the compile objects action in the Prod library in Prod System
 
 
 # Points to note
 - Testing is more important for DevOps
 - Build the sandbox, test it, update/migrate tools, then test again. 
 - Have a fallback plan during migration of PROD.
+
 
