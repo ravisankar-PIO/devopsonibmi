@@ -12,7 +12,7 @@ Enter content here explaining the need for DevOps for IBMi
   - Network Connections
   - Security Concerns
 - There is no "one size fits for all"
-
+ 
 # Major Difference between other servers and IBMi
 
 
