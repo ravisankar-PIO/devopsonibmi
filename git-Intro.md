@@ -6,6 +6,7 @@
 - [Usage](#usage)
   - [Cheat Sheet](#cheat-sheet)
   - [Visual helper](#visual-helper)
+  - [Sample workflow with GitHub?](#sample-workflow-with-github)
 
 
 # Installation
@@ -100,3 +101,16 @@ Learn git branching via visual game [here](https://learngitbranching.js.org/)
 Before you make irreplaceable damage to your git, use the [firstAidGit](https://firstaidgit.io/#/) for remedy.
 
 ![alt text](images/gitstaging.png)
+
+
+## Sample workflow with GitHub?
+Step-1  Start from GitHub Main Branch 
+Step-2  Create GitHub Task Branch for an issue
+Step-3  thereby automatically creating a Task Library in IBMi (via Jenkins?)
+Step-4  Clone the repo in IBMi under developers name
+Step-5  Create a DevTask branch in local Git with an empty commit
+Step-6  thereby creating a DevTask Sourcefiles in IBMi (under Dev's library)
+Step-7  Edit and commit the sources to the DevTask branch
+Step-8  Create a PR in GitHub to merge the changes from the DevTask branch to the Task Branch
+Step-9  Once merged, use Jenkins to automate builds and tests in Task Branch (and thereby Task Library)
+Step-10 End by committing the changes in GitHub Main Branch
