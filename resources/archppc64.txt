@@ -1,7 +1,0 @@
-https://repo.archlinuxpower.org/base/powerpc64/
-
-https://archlinuxpower.org/
-
-https://github.com/leonard112/assembly-tictactoe
-
-https://developer.ibm.com/articles/configure-yum-on-aix/
